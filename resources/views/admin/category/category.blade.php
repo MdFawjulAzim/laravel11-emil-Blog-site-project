@@ -28,7 +28,7 @@
                         <th>Image</th>
                         <th>Action</th>
                     </tr>
-                    @foreach ($categories as $index=>$category )
+                    @forelse ($categories as $index=>$category )
                         <tr>
                             <td><div class="form-check">
                                 <label class="form-check-label">
@@ -45,7 +45,14 @@
                             <a href="{{ route('category.delete',$category->id) }}" class="btn btn-danger">Delete</a>
                         </td>
                     </tr>
-                    @endforeach
+                    @empty
+                        <tr>
+                            <td class="text-center" colspan="5">
+                                <h3 >No Data Available</h3>
+                            </td>
+                        </tr>
+                
+                    @endforelse
                 </table>
                 <div class="my-2">
                     <button type="submit" class="btn btn-danger del_check d-none">Delete Checked</button>
