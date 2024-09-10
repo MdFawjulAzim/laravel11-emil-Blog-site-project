@@ -86,74 +86,14 @@
             <div class="row">
                 <div class="col-lg-12 ">
                     <div class="categories-items">
+                        @foreach ($categories as $category )
                         <a class="category-item" href="#">
                             <div class="image">
-                                <img src="{{ asset('frontend_asset') }}/img/categories/1.jpg" alt="">
+                                <img src="{{ asset('uploads/category') }}/{{ $category->category_image }}" alt="">
                             </div>
-                            <p>Design <span>10</span> </p>
+                            <p>{{ $category->category_name }} <span>10</span> </p>
                         </a>
-
-                        <a class="category-item" href="#">
-                            <div class="image">
-                                <img src="{{ asset('frontend_asset') }}/img/categories/2.jpg" alt="">
-                            </div>
-                            <p>Branding <span>09</span></p>
-                        </a>
-
-                        <a class="category-item" href="#">
-                            <div class="image">
-                                <img src="{{ asset('frontend_asset') }}/img/categories/3.jpg" alt="">
-                            </div>
-                            <p>marketing <span>11</span></p>
-                        </a>
-
-                        <a class="category-item" href="#">
-                            <div class="image">
-                                <img src="{{ asset('frontend_asset') }}/img/categories/4.jpg" alt="">
-                            </div>
-                            <p>food <span>05</span></p>
-                        </a>
-
-                        <a class="category-item" href="#">
-                            <div class="image">
-                                <img src="{{ asset('frontend_asset') }}/img/categories/5.jpg" alt="">
-                            </div>
-                            <p>technology <span>04</span></p>
-                        </a>
-
-                        <a class="category-item" href="#">
-                            <div class="image">
-                                <img src="{{ asset('frontend_asset') }}/img/categories/6.jpg" alt="">
-                            </div>
-                            <p>fashion <span>03</span></p>
-                        </a>
-
-                        <a class="category-item" href="#">
-                            <div class="image">
-                                <img src="{{ asset('frontend_asset') }}/img/categories/7.jpg" alt="">
-                            </div>
-                            <p>mobile <span>10</span></p>
-                        </a>
-
-                        <a class="category-item" href="#">
-                            <div class="image">
-                                <img src="{{ asset('frontend_asset') }}/img/categories/8.jpg" alt="">
-                            </div>
-                            <p>livestyle <span>08</span></p>
-                        </a>
-
-                        <a class="category-item" href="#">
-                            <div class="image">
-                                <img src="{{ asset('frontend_asset') }}/img/categories/9.jpg" alt="">
-                            </div>
-                            <p>healty <span>11</span></p>
-                        </a>
-                        <a class="category-item" href="#">
-                            <div class="image">
-                                <img src="{{ asset('frontend_asset') }}/img/categories/10.jpg" alt="">
-                            </div>
-                            <p>healty <span>06</span></p>
-                        </a>
+                        @endforeach
                     </div>
                 </div>
             </div>
