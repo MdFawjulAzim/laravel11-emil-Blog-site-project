@@ -107,6 +107,23 @@ class CategoryController extends Controller
             Category::find($cat_id)->delete();
         }
         return back()->with('category_del','Check Category Deleted Successfully!');
+     }
+//check delete
+     function category_check_restore(Request $request){
+      if($request ->action_btn ==1){
+         foreach($request->category_id as $cat_id){
+            Category::onlyTrashed()->find($cat_id)->restore();
+        }
+        return back()->with('restore','Category Restore Successfully!'); 
+      }else{
+         foreach($request->category_id as $cat_id){
+         $category =Category::onlyTrashed()->find($cat_id);
+         $delete_from =public_path('uploads/category/'.$category->category_image);
+         unlink($delete_from);
+            Category::onlyTrashed()->find($cat_id)->forceDelete();
+        }
+        return back()->with('category_del','Check Category Permanantly Deleted Successfully!');
+      }
 
      }
 

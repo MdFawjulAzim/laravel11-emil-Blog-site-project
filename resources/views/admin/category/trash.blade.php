@@ -11,9 +11,16 @@
             <div class="alert alert-success">{{ session('restore') }}</div>
             @endif
            
-           
+                <form action="{{ route('category.check.restore') }}" method="POST">
+                @csrf
                 <table class="table table-striped">
                     <tr>
+                        <th width="50"><div class="form-check">
+                            <label class="form-check-label">
+                                <input type="checkbox" class="form-check-input" id="chkSelectAll">
+                                Check All
+                            <i class="input-frame"></i></label>
+                        </div></th>
                         <th>SL</th>
                         <th>Category</th>
                         <th>Image</th>
@@ -21,6 +28,11 @@
                     </tr>
                     @foreach ($trash_cat as $index=>$category )
                         <tr>
+                            <td><div class="form-check">
+                                <label class="form-check-label">
+                                    <input type="checkbox" name="category_id[]" value="{{ $category -> id }}" class="form-check-input chkDel">
+                                <i class="input-frame"></i></label>
+                            </div></td>
                         <td>{{ $index+1 }}</td>
                         <td>{{ $category->category_name }}</td>
                         <td>
@@ -35,6 +47,11 @@
                     @endforeach
                     
                 </table>
+                <div class="my-2">
+                    <button name="action_btn" value="1" type="submit" class="btn btn-info del_check d-none">Restore</button>
+                    <button name="action_btn" value="2" type="submit" class="btn btn-danger del_check d-none">Delete Checked</button>
+                </div>
+            </form>
             </div>
         </div>
 
@@ -47,7 +64,6 @@
 @endsection
 
 @section('script')
-
     <script>
         $('.del').click(function(){
             Swal.fire({
@@ -76,8 +92,16 @@
             });
     </script>
     @endif
+    <script>
+        $("#chkSelectAll").on('click', function(){
+     this.checked ? $(".chkDel").prop("checked",true) : $(".chkDel").prop("checked",false); 
+     $('.del_check').toggleClass('d-none')
+})
 
-
+$(".chkDel").on('click', function(){
+     $('.del_check').removeClass('d-none')
+})
+    </script>
 
 @endsection
 

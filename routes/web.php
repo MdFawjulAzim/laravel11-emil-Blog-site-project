@@ -45,6 +45,4 @@ Route::get('/category/delete/{category_id}',[CategoryController::class,'category
 Route::get('/category/restore/{category_id}',[CategoryController::class,'category_restore'])->name('category.restore');
 Route::get('/category/hard/delete/{category_id}',[CategoryController::class,'category_hard_delete'])->name('category.hard.delete');
 Route::post('/category/check_delete',[CategoryController::class,'category_check_delete'])->name('category.check.delete');
-
-
-
+Route::post('/category/check/restore',[CategoryController::class,'category_check_restore'])->name('category.check.restore');

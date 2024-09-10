@@ -20,7 +20,7 @@
                         <th width="50"><div class="form-check">
                             <label class="form-check-label">
                                 <input type="checkbox" class="form-check-input" id="chkSelectAll">
-                                Chech All
+                                Check All
                             <i class="input-frame"></i></label>
                         </div></th>
                         <th>SL</th>
