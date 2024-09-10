@@ -9,7 +9,7 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 //Frontend
-Route::get('/',[FrontendController::class,'welcome']);
+Route::get('/',[FrontendController::class,'index'])->name('index');
 
 
 Route::get('/dashboard',[HomeController::class,'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
