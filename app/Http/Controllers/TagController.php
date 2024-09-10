@@ -23,7 +23,6 @@ class TagController extends Controller
     }
     function tags_delete($tag_id){
         Tag::find($tag_id)->delete();
-        return back()->with('del','Tags Deleted  Successfully!');
-
+        return back()->with('del','Tags Deleted  Successfully!');   
     }
 }
