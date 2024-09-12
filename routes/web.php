@@ -33,9 +33,9 @@ Route::middleware('auth')->group(function () {
 });
 
 //profile
-Route::post('add/user',[UserController::class,'add_user'])->name('add.user');
-Route::get('/users',[UserController::class,'users'])->name('users');
-Route::get('/edit/profile',[UserController::class,'edit_profile'])->name('edit.profile');
+Route::post('add/user',[UserController::class,'add_user'])->middleware('auth')->name('add.user');
+Route::get('/users',[UserController::class,'users'])->middleware('auth')->name('users');
+Route::get('/edit/profile',[UserController::class,'edit_profile'])->middleware('auth')->name('edit.profile');
 Route::post('/update/profile',[UserController::class,'update_profile'])->name('update.profile'); 
 Route::post('/update/password',[UserController::class,'update_password'])->name('update.password'); 
 Route::post('/update/photo',[UserController::class,'update_photo'])->name('update.photo'); 
@@ -43,10 +43,10 @@ Route::get('/user/delete/{user_id}',[UserController::class,'user_delete'])->name
 
 //Category
 
-Route::get('/category',[CategoryController::class,'category'])->name('category');
-Route::get('/trash',[CategoryController::class,'trash'])->name('trash');
+Route::get('/category',[CategoryController::class,'category'])->middleware('auth')->name('category');
+Route::get('/trash',[CategoryController::class,'trash'])->middleware('auth')->name('trash');
 Route::post('/category/store',[CategoryController::class,'category_store'])->name('category.store');
-Route::get('/category/edit/{category_id}',[CategoryController::class,'category_edit'])->name('category.edit');
+Route::get('/category/edit/{category_id}',[CategoryController::class,'category_edit'])->middleware('auth')->name('category.edit');
 Route::post('/category/update/{category_id}',[CategoryController::class,'category_update'])->name('category.update');
 Route::get('/category/delete/{category_id}',[CategoryController::class,'category_delete'])->name('category.delete');
 Route::get('/category/restore/{category_id}',[CategoryController::class,'category_restore'])->name('category.restore');
@@ -55,7 +55,7 @@ Route::post('/category/check_delete',[CategoryController::class,'category_check_
 Route::post('/category/check/restore',[CategoryController::class,'category_check_restore'])->name('category.check.restore');
 
 //tags
-Route::get('/tags',[TagController::class,'tags'])->name('tags');
+Route::get('/tags',[TagController::class,'tags'])->middleware('auth')->name('tags');
 Route::post('/tags/store',[TagController::class,'tags_store'])->name('tags.store');
 Route::get('/tags/delete/{tag_id}',[TagController::class,'tags_delete'])->name('tags.delete');
 
@@ -64,6 +64,6 @@ Route::get('/tags/delete/{tag_id}',[TagController::class,'tags_delete'])->name('
 Route::post('/author/register/post',[AuthorController::class,'author_register'])->name('author.register');
 Route::post('/author/login/post',[AuthorController::class,'author_login'])->name('author.login');
 Route::get('/author/logout',[AuthorController::class,'author_logout'])->name('author.logout');
-Route::get('/author/dashboard',[AuthorController::class,'author_dashboard'])->name('author.dashboard');
+Route::get('/author/dashboard',[AuthorController::class,'author_dashboard'])->middleware('author')->name('author.dashboard');
 
 

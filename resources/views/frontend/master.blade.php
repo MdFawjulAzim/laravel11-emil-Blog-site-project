@@ -96,7 +96,7 @@
                               {{ Auth::guard('author')->user()->name }}
                             </button>
                             <div class="dropdown-menu">
-                              <a class="dropdown-item" href="">Admin Panel</a>
+                              <a class="dropdown-item" href="{{ route('author.dashboard') }}">Admin Panel</a>
                               <a class="dropdown-item" href="{{ route('author.logout') }}">Logout</a>
                               
                             </div>

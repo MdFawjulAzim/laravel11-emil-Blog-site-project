@@ -49,6 +49,10 @@ class AuthorController extends Controller
 
     function author_logout(){
         Auth::guard('author')->logout();
-        return back();
+        return redirect('/');
+    }
+
+    function author_dashboard(){
+        return view('frontend.author.admin');
     }
 }
