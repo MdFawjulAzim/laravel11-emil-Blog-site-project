@@ -9,13 +9,19 @@
                 <div class="login-content">
                     <h4>Login</h4>
                     <p></p>
-                    <form  action="" class="sign-form widget-form " method="POST">
+                    <form  action="{{ route('author.login') }}" class="sign-form widget-form " method="POST">
                         @csrf
                         <div class="form-group">
                             <input type="email" class="form-control" placeholder="Email*" name="email" value="">
+                            @if(session('exist'))
+                                <strong class="text-danger">{{ session('exist') }}</strong>   
+                            @endif
                         </div>
                         <div class="form-group">
                             <input type="password" class="form-control" placeholder="Password*" name="password" value="">
+                            @if(session('pass_wrong'))
+                                <strong class="text-danger">{{ session('pass_wrong') }}</strong>   
+                            @endif
                         </div>
                         <div class="sign-controls form-group">
                             <a href="#" class="btn-link ">Forgot Password?</a>

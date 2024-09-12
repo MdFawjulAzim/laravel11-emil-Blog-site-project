@@ -6,6 +6,7 @@ use App\Models\Author;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules\Password;
 
 class AuthorController extends Controller
@@ -30,5 +31,24 @@ class AuthorController extends Controller
         ]);
         return back()->with('author_register','Registrations Success!Your Account is pending for Approval!We will get confirmation mail when your account will active!');
         
+    }
+
+    function author_login(Request $request){
+        if(Author::where('email',$request->email)->exists()){
+            if(Auth::guard('author')->attempt(['email'=>$request->email,'password'=>$request->password])){
+                return redirect()->route('index');
+
+            }else{
+                return back()->with('pass_wrong','Wrong Password!');
+            }
+
+        }else{
+            return back()->with('exist','Email Does Not Exist!');
+        }
+    }
+
+    function author_logout(){
+        Auth::guard('author')->logout();
+        return back();
     }
 }
