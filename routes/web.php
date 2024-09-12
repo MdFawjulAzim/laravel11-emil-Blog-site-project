@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Route;
 
 //Frontend
 Route::get('/',[FrontendController::class,'index'])->name('index');
+Route::get('/author/login/page',[FrontendController::class,'author_login_page'])->name('author.login.page');
+Route::get('/author/register/page',[FrontendController::class,'author_register_page'])->name('author.register.page');
+
+
+
 
 
 Route::get('/dashboard',[HomeController::class,'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');

@@ -16,4 +16,12 @@ class FrontendController extends Controller
             'tags'=>$tags,
         ]);
     }
+
+    function author_login_page(){
+        return view('frontend.author.login');
+    }
+
+    function author_register_page(){
+        return view('frontend.author.author_register_page');
+    }
 }
