@@ -36,7 +36,12 @@ class AuthorController extends Controller
     function author_login(Request $request){
         if(Author::where('email',$request->email)->exists()){
             if(Auth::guard('author')->attempt(['email'=>$request->email,'password'=>$request->password])){
-                return redirect()->route('index');
+                if(Auth::guard('author')->user()->status != 1){
+                    Auth::guard('author')->logout();
+                    return back()->with('pending','Your Account Is Pending For Approval!');
+                }else{
+                    return redirect()->route('index');
+                }
 
             }else{
                 return back()->with('pass_wrong','Wrong Password!');
