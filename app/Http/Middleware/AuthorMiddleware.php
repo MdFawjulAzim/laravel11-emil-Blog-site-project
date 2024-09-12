@@ -17,7 +17,7 @@ class AuthorMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         if(!Auth::guard('author')->check()){
-            return redirect('/author/login/page');
+            return redirect()->route('author.login.page');
 
         }
 
