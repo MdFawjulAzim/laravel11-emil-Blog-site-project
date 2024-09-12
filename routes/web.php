@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\HomeController;
@@ -57,3 +58,9 @@ Route::post('/category/check/restore',[CategoryController::class,'category_check
 Route::get('/tags',[TagController::class,'tags'])->name('tags');
 Route::post('/tags/store',[TagController::class,'tags_store'])->name('tags.store');
 Route::get('/tags/delete/{tag_id}',[TagController::class,'tags_delete'])->name('tags.delete');
+
+
+//Authors
+Route::post('/author/register/post',[AuthorController::class,'author_register'])->name('author.register');
+
+

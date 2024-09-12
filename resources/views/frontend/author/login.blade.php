@@ -9,7 +9,7 @@
                 <div class="login-content">
                     <h4>Login</h4>
                     <p></p>
-                    <form  action="#" class="sign-form widget-form " method="POST">
+                    <form  action="" class="sign-form widget-form " method="POST">
                         @csrf
                         <div class="form-group">
                             <input type="email" class="form-control" placeholder="Email*" name="email" value="">

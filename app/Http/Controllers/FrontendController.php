@@ -22,6 +22,6 @@ class FrontendController extends Controller
     }
 
     function author_register_page(){
-        return view('frontend.author.author_register_page');
+        return view('frontend.author.register');
     }
 }
