@@ -66,7 +66,7 @@ Route::post('/author/login/post',[AuthorController::class,'author_login'])->name
 Route::get('/author/logout',[AuthorController::class,'author_logout'])->name('author.logout');
 Route::get('/author/dashboard',[AuthorController::class,'author_dashboard'])->middleware('author')->name('author.dashboard');
 
-
+//Authors Admin Controller
 Route::get('/authors', [UserController::class, 'authors'])->middleware('auth')->name('authors');
 Route::get('/authors/status/{author_id}', [UserController::class, 'authors_status'])->name('authors.status');
 
