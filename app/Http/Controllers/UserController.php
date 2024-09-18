@@ -116,6 +116,11 @@ class UserController extends Controller
             }
 
     }
+    function author_delete($author_id){
+        Author::find($author_id)->delete();
+        return back()->with('del','Author Deleted Successfully!');
+    }
+
    
 
 }

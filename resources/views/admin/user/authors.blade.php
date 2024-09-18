@@ -10,6 +10,9 @@
                 @if(session('success'))
                     <div class="alert alert-success">{{ session('success') }}</div>
                 @endif
+                @if(session('del'))
+                    <div class="alert alert-success">{{ session('del') }}</div>
+                @endif
                 <table class="table table-bordered">
                 <tr>
                     <th>SL</th>
@@ -37,7 +40,7 @@
                         </td>
                         <td>
                             <a href="{{ route('authors.status',$author->id) }}" class="btn btn-{{ $author->status ==1?'success':'primary' }}">Change Status</a>
-                            <a class="btn btn-danger">Delete</a>
+                            <a href="{{ route('author.delete',$author->id) }}" class="btn btn-danger">Delete</a>
                         </td>
                     </tr>
                 @endforeach
