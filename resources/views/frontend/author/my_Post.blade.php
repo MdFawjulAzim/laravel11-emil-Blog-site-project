@@ -10,6 +10,9 @@
                 @if (session('status_change'))
                     <div class="alert alert-success">{{ session('status_change') }}</div>
                 @endif
+                @if (session('del'))
+                    <div class="alert alert-success">{{ session('del') }}</div>
+                @endif
                 <table class="table table-bordered ">
                     <tr>
                         <th>SL</th>
@@ -31,7 +34,7 @@
                             </td>
                             <td>
                                 <a href="{{ route('my.post.status',$post->id) }}" class="btn btn-{{ $post->status==1?'success':'secondary' }}">{{ $post->status==1?'Active':'Deactive' }}</a>
-                                <a href="" class="btn btn-danger">Delete</a>
+                                <a href="{{ route('my.post.delete',$post->id) }}" class="btn btn-danger">Delete</a>
                             </td>
                         </tr>
                     @endforeach

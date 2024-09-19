@@ -75,5 +75,17 @@ class PostController extends Controller
             return back()->with('status_change','Post Unpublished Successfully!');
         }
     }
+    function my_post_delete($post_id){
+        $post = Post::find($post_id);
+        //preview
+        $delete_from = public_path('uploads/post/preview/'. $post->preview);
+        unlink($delete_from);
+        //thumbnail
+        $delete_from2 = public_path('uploads/post/thumbnail/'. $post->thumbnail);
+        unlink($delete_from2);
+
+        Post::find($post_id)->delete();
+        return back()->with('del','Post Deleted Successfully!');
+    }
 }
 
