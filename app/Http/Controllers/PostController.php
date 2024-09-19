@@ -67,12 +67,12 @@ class PostController extends Controller
             Post::find($post_id)->update([
                'status'=>0,
             ]);
-            return back()->with('status_change','Post Published Successfully!');
+            return back()->with('status_change','Post UnPublished Successfully!');
         }else{
             Post::find($post_id)->update([
                'status'=>1,
             ]);
-            return back()->with('status_change','Post Unpublished Successfully!');
+            return back()->with('status_change','Post published Successfully!');
         }
     }
     function my_post_delete($post_id){
