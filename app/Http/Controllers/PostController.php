@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Models\Tag;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
 class PostController extends Controller
@@ -53,6 +54,26 @@ class PostController extends Controller
         ]);
 
         return back()->with('added', 'Post added successfully!');
+    }
+    function my_post(){
+        $posts = Post::where('author_id', Auth::guard('author')->id())->get();
+        return view('frontend.author.my_Post',[
+            'posts'=>$posts,
+        ]);
+    }
+    function my_post_status($post_id){
+        $post = Post:: find($post_id);
+        if($post -> status == 1){
+            Post::find($post_id)->update([
+               'status'=>0,
+            ]);
+            return back()->with('status_change','Post Published Successfully!');
+        }else{
+            Post::find($post_id)->update([
+               'status'=>1,
+            ]);
+            return back()->with('status_change','Post Unpublished Successfully!');
+        }
     }
 }
 

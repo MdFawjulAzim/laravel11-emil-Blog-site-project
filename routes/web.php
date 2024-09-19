@@ -82,6 +82,8 @@ Route::get('/authors/status/{author_id}', [UserController::class, 'authors_statu
 //posts authors 
 Route::get('/add/post',[PostController::class,'add_post'])->name('add.post');
 Route::post('/post/store',[PostController::class,'post_store'])->name('post.store');
+Route::get('/my/post',[PostController::class,'my_post'])->name('my.post');
+Route::get('/my/post/status/{post_id}',[PostController::class,'my_post_status'])->name('my.post.status');
 
 
 
