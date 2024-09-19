@@ -39,6 +39,9 @@
                         </tr>
                     @endforeach
                 </table>
+                <div class="my-5">
+                    {{ $posts->links() }}
+                </div>
             </div>
         </div>
     </div>
