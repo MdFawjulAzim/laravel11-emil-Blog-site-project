@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\UserController;
@@ -77,6 +78,9 @@ Route::get('/authors', [UserController::class, 'authors'])->middleware('auth')->
 Route::get('/author/delete/{author_id}',[UserController::class,'author_delete'])->name('author.delete');
 Route::get('/authors/status/{author_id}', [UserController::class, 'authors_status'])->name('authors.status');
 
+
+//posts authors controller
+Route::get('/add/post',[PostController::class,'add_post'])->name('add.post');
 
 
 

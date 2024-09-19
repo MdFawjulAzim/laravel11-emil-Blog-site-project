@@ -19,6 +19,11 @@
 	<link rel="stylesheet" href="{{ asset('admin_asset') }}/css/demo_1/style.css">
   <!-- End layout styles -->
   <link rel="shortcut icon" href="{{ asset('admin_asset') }}/images/favicon.png" />
+  <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.15.2/css/selectize.default.min.css"
+/>
 </head>
 <body>
 	<div class="main-wrapper">
@@ -48,13 +53,13 @@
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#emails" role="button" aria-expanded="false" aria-controls="emails">
               <i class="link-icon" data-feather="mail"></i>
-              <span class="link-title">Email</span>
+              <span class="link-title">Post</span>
               <i class="link-arrow" data-feather="chevron-down"></i>
             </a>
             <div class="collapse" id="emails">
               <ul class="nav sub-menu">
                 <li class="nav-item">
-                  <a href="../../pages/email/inbox.html" class="nav-link">Inbox</a>
+                  <a href="{{ route('add.post') }}" class="nav-link">Add New Post</a>
                 </li>
                 <li class="nav-item">
                   <a href="../../pages/email/read.html" class="nav-link">Read</a>
@@ -183,6 +188,16 @@
 	<!-- inject:js -->
 	<script src="{{ asset('admin_asset') }}/vendors/feather-icons/feather.min.js"></script>
 	<script src="{{ asset('admin_asset') }}/js/template.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+	<script>
+		 $('#summernote').summernote();
+	</script>
+	<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.15.2/js/selectize.min.js"
+  ></script>
+  <script>
+	$('#select-gear').selectize({ sortField: 'text' })
+  </script>
 	<!-- endinject -->
 	<!-- custom js for this page -->
   <!-- end custom js for this page -->

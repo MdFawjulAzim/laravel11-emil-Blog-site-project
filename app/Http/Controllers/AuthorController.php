@@ -121,4 +121,5 @@ class AuthorController extends Controller
             return back()->with('err', 'Current Password Does Not Match!');
         }
     }
+    
 }
