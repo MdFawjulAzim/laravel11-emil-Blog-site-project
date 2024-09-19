@@ -56,7 +56,7 @@ class PostController extends Controller
         return back()->with('added', 'Post added successfully!');
     }
     function my_post(){
-        $posts = Post::where('author_id', Auth::guard('author')->id())->paginate(2);
+        $posts = Post::where('author_id', Auth::guard('author')->id())->simplepaginate(2);
         return view('frontend.author.my_Post',[
             'posts'=>$posts,
         ]);

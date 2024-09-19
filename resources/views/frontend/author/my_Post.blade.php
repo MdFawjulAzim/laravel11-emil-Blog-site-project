@@ -24,7 +24,7 @@
 
                     @foreach ($posts as $index=>$post )
                         <tr>
-                            <td>{{ $index +1 }}</td>
+                            <td>{{ $posts->firstitem()+$index }}</td>
                             <td>{{ $post->title }}</td>
                             <td>
                                 <img src="{{ asset('uploads/post/preview') }}/{{ $post->preview }}" alt="">
