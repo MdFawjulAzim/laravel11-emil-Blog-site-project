@@ -20,7 +20,7 @@ class PostController extends Controller
         ]);
     }
     function post_store(Request $request){
-        // preview image processing
+       // preview image processing
     $preview = $request->preview;
     $extension = $preview->extension();
     $preview_name = uniqid() . '.' . $extension;
@@ -37,23 +37,22 @@ class PostController extends Controller
 
     $manager = new ImageManager(new Driver());
     $image = $manager->read($thumbnail);
-    $image->resize(300, 300);
+    $image->resize(300, 200);
     $image->save(public_path('uploads/post/thumbnail/' . $thumbnail_name));
+        // Insert post data into the database
+        Post::insert([
+            'author_id' => auth()->guard('author')->id(),
+            'category_id' => $request->category_id,
+            'read_time' => $request->read_time,
+            'title' => $request->title,
+            'desp' => $request->desp ?? 'No description provided',  // Fallback if description is null
+            'tags' => implode(',', $request->tag_id ?? []),
+            'preview' => $preview_name,
+            'thumbnail' => $thumbnail_name,
+            'created_at' => Carbon::now(),
+        ]);
 
-    // Insert post data into the database
-    Post::insert([
-        'author_id' => auth()->guard('author')->id(),
-        'category_id' => $request->category_id,
-        'read_time' => $request->read_time,
-        'title' => $request->title,
-        'desp' => $request->desp ?? 'No description provided',  // Fallback if description is null
-        'tags' => implode(',', $request->tag_id ?? []),
-
-        'preview' => $preview_name,
-        'thumbnail' => $thumbnail_name,
-        'created_at' => Carbon::now(),
-    ]);
-
-    return back()->with('added', 'Post Added Successfully!');
+        return back()->with('added', 'Post added successfully!');
+    }
 }
-}
+

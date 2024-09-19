@@ -12,6 +12,11 @@
                     {{ session('added') }}
                 </div>
                 @endif
+                @if(session('not'))
+                <div class="alert alert-danger" role="alert">
+                    {{ session('not') }}
+                </div>
+                @endif
 
 
             <form action="{{ route('post.store') }}" method="POST" enctype="multipart/form-data">
