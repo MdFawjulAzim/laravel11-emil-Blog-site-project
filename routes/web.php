@@ -65,6 +65,11 @@ Route::post('/author/register/post',[AuthorController::class,'author_register'])
 Route::post('/author/login/post',[AuthorController::class,'author_login'])->name('author.login');
 Route::get('/author/logout',[AuthorController::class,'author_logout'])->name('author.logout');
 Route::get('/author/dashboard',[AuthorController::class,'author_dashboard'])->middleware('author')->name('author.dashboard');
+Route::get('/authors/edit',[AuthorController::class,'author_edit'])->name('author.edit');
+Route::post('/authors/profile/update',[AuthorController::class,'author_profile_update'])->name('author.profile.update');
+Route::post('/authors/pass/update',[AuthorController::class,'author_pass_update'])->name('author.pass.update');
+
+
 
 
 //Authors Admin Controller
