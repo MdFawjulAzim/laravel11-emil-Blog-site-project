@@ -79,8 +79,9 @@ Route::get('/author/delete/{author_id}',[UserController::class,'author_delete'])
 Route::get('/authors/status/{author_id}', [UserController::class, 'authors_status'])->name('authors.status');
 
 
-//posts authors controller
+//posts authors 
 Route::get('/add/post',[PostController::class,'add_post'])->name('add.post');
+Route::post('/post/store',[PostController::class,'post_store'])->name('post.store');
 
 
 

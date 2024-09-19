@@ -7,7 +7,14 @@
                 <h3 class="text-white">Add New Post</h3>
             </div>
             <div class="card-body">
-            <form action="" method="POST" enctype="multipart/form-data">
+                @if(session('added'))
+                <div class="alert alert-success" role="alert">
+                    {{ session('added') }}
+                </div>
+                @endif
+
+
+            <form action="{{ route('post.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                     <div class="col-lg-3">
