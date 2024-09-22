@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Models\Tag;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
@@ -21,25 +22,38 @@ class PostController extends Controller
         ]);
     }
     function post_store(Request $request){
-       // preview image processing
-    $preview = $request->preview;
-    $extension = $preview->extension();
-    $preview_name = uniqid() . '.' . $extension;
-
-    $manager = new ImageManager(new Driver());
-    $image = $manager->read($preview);
-    $image->resize(300, 300);
-    $image->save(public_path('uploads/post/preview/' . $preview_name));
-
-    // thumbnail image processing
-    $thumbnail = $request->thumbnail;
-    $extension = $thumbnail->extension();
-    $thumbnail_name = uniqid() . '.' . $extension;
-
-    $manager = new ImageManager(new Driver());
-    $image = $manager->read($thumbnail);
-    $image->resize(300, 200);
-    $image->save(public_path('uploads/post/thumbnail/' . $thumbnail_name));
+        // Check if 'preview' image is uploaded
+        if (!$request->hasFile('preview')) {
+            return back()->withErrors(['preview' => 'Preview image is required.'])->withInput();
+        }
+    
+        // Check if 'thumbnail' image is uploaded
+        if (!$request->hasFile('thumbnail')) {
+            return back()->withErrors(['thumbnail' => 'Thumbnail image is required.'])->withInput();
+        }
+    
+        // Proceed with image processing as both images are present
+    
+        // Preview image processing
+        $preview = $request->file('preview'); // Use file() to get the UploadedFile instance
+        $extension = $preview->extension();
+        $preview_name = uniqid() . '.' . $extension;
+    
+        $manager = new ImageManager(new Driver());
+        $image = $manager->read($preview);
+        $image->resize(300, 300);
+        $image->save(public_path('uploads/post/preview/' . $preview_name));
+    
+        // Thumbnail image processing
+        $thumbnail = $request->file('thumbnail');
+        $extension = $thumbnail->extension();
+        $thumbnail_name = uniqid() . '.' . $extension;
+    
+        $manager = new ImageManager(new Driver());
+        $image = $manager->read($thumbnail);
+        $image->resize(300, 200);
+        $image->save(public_path('uploads/post/thumbnail/' . $thumbnail_name));
+    
         // Insert post data into the database
         Post::insert([
             'author_id' => auth()->guard('author')->id(),
@@ -52,9 +66,10 @@ class PostController extends Controller
             'thumbnail' => $thumbnail_name,
             'created_at' => Carbon::now(),
         ]);
-
+    
         return back()->with('added', 'Post added successfully!');
     }
+
     function my_post(){
         $posts = Post::where('author_id', Auth::guard('author')->id())->simplepaginate(2);
         return view('frontend.author.my_Post',[

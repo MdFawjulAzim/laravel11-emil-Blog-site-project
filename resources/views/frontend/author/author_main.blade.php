@@ -198,6 +198,7 @@
   <script>
 	$('#select-gear').selectize({ sortField: 'text' })
   </script>
+  @yield('scripts')
 	<!-- endinject -->
 	<!-- custom js for this page -->
   <!-- end custom js for this page -->
