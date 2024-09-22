@@ -51,12 +51,14 @@
               <span class="link-title">users</span>
               <i class="link-arrow" ></i>
             </a>
-            <a class="nav-link" href="{{ route('authors') }}">
-              <i class="link-icon" data-feather="mail"></i>
-              <span class="link-title">Authors</span>
-              <i class="link-arrow" ></i>
-            </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('authors') }}">
+                <i class="link-icon" data-feather="users"></i>
+                <span class="link-title">Authors</span>
+                <i class="link-arrow"></i>
+            </a>
+        </li>
           <li class="nav-item nav-category">Components</li>
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#uiComponents" role="button" aria-expanded="false" aria-controls="uiComponents">
