@@ -1,10 +1,13 @@
 @extends('frontend.author.author_main')
+
 @section('content')
 <div class="row">
     <div class="col-lg-12">
         <div class="card">
-            <div class="card-header bg-primary">
+            <!-- কার্ড হেডারে ফ্লেক্স লেআউট এবং বাটন যোগ করা হয়েছে -->
+            <div class="card-header bg-primary d-flex justify-content-between align-items-center">
                 <h3 class="text-white">Add New Post</h3>
+                <a href="{{ route('my.post') }}" class="btn btn-light">My Post List</a>
             </div>
             <div class="card-body">
                 @if(session('added'))
@@ -105,12 +108,12 @@
                         <div class="col-lg-6">
                             <div class="mb-3">
                                 <label for="preview" class="form-label">Preview</label>
-                                <input type="file" name="preview" id="preview" class="form-control @error('preview') border-danger @enderror" accept="image/*" >
+                                <input type="file" name="preview" id="preview" class="form-control @error('preview') border-danger @enderror" accept="image/*">
                                 @error('preview')
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror
                                 <!-- প্রিভিউ ইমেজ দেখানোর জন্য এলিমেন্ট -->
-                                <img id="preview-image" src="#" alt="Preview Image" style="display: none; width: 200px;height:200px; margin-top: 10px;" />
+                                <img id="preview-image" src="#" alt="Preview Image" style="display: none; width: 200px; height:200px; margin-top: 10px;" />
                             </div>
                         </div>
 
@@ -123,7 +126,7 @@
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror
                                 <!-- থাম্বনেইল ইমেজ দেখানোর জন্য এলিমেন্ট -->
-                                <img id="thumbnail-image" src="#" alt="Thumbnail Image" style="display: none; width: 200px;height:200px; margin-top: 10px;" />
+                                <img id="thumbnail-image" src="#" alt="Thumbnail Image" style="display: none; width: 200px; height:200px; margin-top: 10px;" />
                             </div>
                         </div>
 
@@ -141,6 +144,7 @@
     </div>
 </div>
 @endsection
+
 <!-- জাভাস্ক্রিপ্ট সেকশন -->
 @section('scripts')
 <script>
@@ -170,3 +174,4 @@
     });
 </script>
 @endsection
+

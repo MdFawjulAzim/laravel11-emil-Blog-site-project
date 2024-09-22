@@ -51,7 +51,7 @@ class PostController extends Controller
     
         $manager = new ImageManager(new Driver());
         $image = $manager->read($thumbnail);
-        $image->resize(300, 200);
+        $image->resize(300, 300);
         $image->save(public_path('uploads/post/thumbnail/' . $thumbnail_name));
     
         // Insert post data into the database
@@ -71,7 +71,7 @@ class PostController extends Controller
     }
 
     function my_post(){
-        $posts = Post::where('author_id', Auth::guard('author')->id())->simplepaginate(2);
+        $posts = Post::where('author_id', Auth::guard('author')->id())->simplepaginate(10);
         return view('frontend.author.my_Post',[
             'posts'=>$posts,
         ]);
