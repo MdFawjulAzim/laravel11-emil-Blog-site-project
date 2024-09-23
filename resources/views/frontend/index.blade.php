@@ -7,72 +7,35 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="owl-carousel">
+                    @foreach ($sliders as $slider )
+                        
+                   
                     <!--post1-->
-                    <div class="blog-item" style="background-image: url('{{ asset('frontend_asset') }}/img/blog/bg1.jpg')">
+                    <div class="blog-item" style="background-image: url('{{ asset('uploads/post/preview') }}/{{ $slider->preview }}')">
                         <div class="blog-banner">
                             <div class="post-overly">
                                 <div class="post-overly-content">
                                     <div class="entry-cat">
-                                        <a href="blog-layout-1.html" class="category-style-2">Branding</a>
+                                        <a href="blog-layout-1.html" class="category-style-2">{{ $slider->rel_to_category->category_name }}</a>
                                     </div>
                                     <h2 class="entry-title">
-                                        <a href="post-single.html">Architecture is a visual art and the buildings
-                                            speak for them selves </a>
+                                        <a href="post-single.html">{{ $slider->title }} </a>
                                     </h2>
                                     <ul class="entry-meta">
-                                        <li class="post-author"> <a href="author.html">Meriam Smith</a></li>
-                                        <li class="post-date"> <span class="line"></span> Fabuary 10 ,2022</li>
-                                        <li class="post-timeread"> <span class="line"></span> 15 mins read</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--post2-->
-                    <div class="blog-item" style="background-image: url('{{ asset('frontend_asset') }}/img/blog/bg2.jpg')">
-                        <div class="blog-banner">
-                            <div class="post-overly">
-                                <div class="post-overly-content">
-                                    <div class="entry-cat">
-                                        <a href="blog-layout-1.html" class="category-style-2">Livestyle</a>
-                                    </div>
-                                    <h2 class="entry-title">
-                                        <a href="post-single.html">Styles come and go. Good design is a language,
-                                            not a style. </a>
-                                    </h2>
-                                    <ul class="entry-meta">
-                                        <li class="post-author"> <a href="author.html">Meriam Smith</a></li>
-                                        <li class="post-date"> <span class="line"></span> Fabuary 10 ,2022</li>
-                                        <li class="post-timeread"> <span class="line"></span> 15 mins read</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--post3-->
-                    <div class="blog-item" style="background-image: url('{{ asset('frontend_asset') }}/img/blog/bg3.jpg')">
-                        <div class="blog-banner">
-                            <div class="post-overly">
-                                <div class="post-overly-content">
-                                    <div class="entry-cat">
-                                        <a href="blog-layout-1.html" class="category-style-2">branding</a>
-                                    </div>
-                                    <h2 class="entry-title">
-                                        <a href="post-single.html">Ignoring online marketing is like opening a
-                                            business but not telling anyone </a>
-                                    </h2>
-                                    <ul class="entry-meta">
-                                        <li class="post-author"> <a href="author.html">Meriam Smith</a></li>
-                                        <li class="post-date"> <span class="line"></span> Fabuary 10 ,2022</li>
-                                        <li class="post-timeread"> <span class="line"></span> 15 mins read</li>
+                                        <li class="post-author"> <a href="author.html">{{ $slider->rel_to_author->name }}</a></li>
+                                        <li class="post-date">
+                                            <span class="line"></span> {{ $slider->created_at->diffForHumans() }}
+                                        </li>
+                                        
+                                        <li class="post-timeread"> <span class="line"></span> {{ $slider->read_time }} mins read</li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <!--/-->
+
+                    @endforeach
                 </div>
             </div>
         </div>

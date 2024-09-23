@@ -15,4 +15,7 @@ class Post extends Model
     function rel_to_category(){
         return $this->belongsTo(Category::class,'category_id');
     }
+    function rel_to_author(){
+        return $this->belongsTo(Author::class,'author_id');
+    }
 }

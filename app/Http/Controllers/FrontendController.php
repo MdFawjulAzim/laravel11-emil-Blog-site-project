@@ -13,10 +13,12 @@ class FrontendController extends Controller
         $categories = Category::all();
         $tags = Tag::all();
         $posts = Post::where('status',1)->get();
+        $sliders = Post::where('status',1)->latest()->take(3)->get();
         return view('frontend.index',[
             'categories'=> $categories,
             'tags'=>$tags,
             'posts'=>$posts,
+            'sliders'=>$sliders,
         ]);
     }
 
