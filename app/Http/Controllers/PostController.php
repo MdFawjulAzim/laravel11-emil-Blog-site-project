@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
+Use Illuminate\Support\Str;
 class PostController extends Controller
 {
     function add_post(){
@@ -22,6 +23,10 @@ class PostController extends Controller
         ]);
     }
     function post_store(Request $request){
+        
+       
+
+
         // Check if 'preview' image is uploaded
         if (!$request->hasFile('preview')) {
             return back()->withErrors(['preview' => 'Preview image is required.'])->withInput();
@@ -60,6 +65,7 @@ class PostController extends Controller
             'category_id' => $request->category_id,
             'read_time' => $request->read_time,
             'title' => $request->title,
+            'slug' => Str::lower(str_replace(' ', '-', $request->title)).'-'.random_int(10000,200000),
             'desp' => $request->desp ?? 'No description provided',  // Fallback if description is null
             'tags' => implode(',', $request->tag_id ?? []),
             'preview' => $preview_name,
