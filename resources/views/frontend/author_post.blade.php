@@ -77,7 +77,7 @@
                         <div class="post-list-content">
                             <ul class="entry-meta"> 
                                 <li class="entry-cat">
-                                    <a href="blog-layout-1.html" class="category-style-1">{{ $post->rel_to_category->category_name }}</a>
+                                    <a href="{{ route('author.post',$post->author_id) }}" class="category-style-1">{{ $post->rel_to_category->category_name }}</a>
                                 </li>
                                 <li class="post-date"> <span class="line"></span> {{ $post->created_at->diffForHumans() }}</li>
                             </ul>

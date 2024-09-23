@@ -90,6 +90,7 @@ Route::get('/my/post/delete/{post_id}',[PostController::class,'my_post_delete'])
 //Frontend Controller
 Route::get('/my/post/details/{slug}',[FrontendController::class,'post_details'])->name('post.details');
 Route::get('/author/post/{author_id}',[FrontendController::class,'author_post'])->name('author.post');
+Route::get('/category/post/{category_id}',[FrontendController::class,'category_post'])->name('category.post');
 
 
 

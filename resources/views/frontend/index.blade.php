@@ -16,13 +16,15 @@
                             <div class="post-overly">
                                 <div class="post-overly-content">
                                     <div class="entry-cat">
-                                        <a href="blog-layout-1.html" class="category-style-2">{{ $slider->rel_to_category->category_name }}</a>
+                                        <!-- Typo fixed from $silder to $slider -->
+                                        <a href="{{ route('category.post', $slider->category_id) }}" class="category-style-2">{{ $slider->rel_to_category->category_name }}</a>
+
                                     </div>
                                     <h2 class="entry-title">
-                                        <a href="{{ route('post.details',$slider->slug) }}">{{ $slider->title }} </a>
+                                        <a href="{{ route('post.details', $slider->slug) }}">{{ $slider->title }} </a>
                                     </h2>
                                     <ul class="entry-meta">
-                                        <li class="post-author"> <a href="author.html">{{ $slider->rel_to_author->name }}</a></li>
+                                        <li class="post-author"> <a href="{{ route('author.post',$slider->author_id) }}">{{ $slider->rel_to_author->name }}</a></li>
                                         <li class="post-date">
                                             <span class="line"></span> {{ $slider->created_at->diffForHumans() }}
                                         </li>
@@ -33,6 +35,7 @@
                             </div>
                         </div>
                     </div>
+
                     <!--/-->
 
                     @endforeach
@@ -50,7 +53,7 @@
                 <div class="col-lg-12 ">
                     <div class="categories-items">
                         @foreach ($categories as $category )
-                        <a class="category-item" href="#">
+                        <a class="category-item" href="{{ route('category.post',$category ->id) }}">
                             <div class="image">
                                 <img src="{{ asset('uploads/category') }}/{{ $category->category_image }}" alt="">
                             </div>
@@ -85,7 +88,7 @@
                         <div class="post-list-content">
                             <ul class="entry-meta">
                                 <li class="entry-cat">
-                                    <a href="blog-layout-1.html" class="category-style-1">{{ $post->rel_to_category->category_name }}</a>
+                                    <a href="{{ route('category.post',$post->category_id) }}" class="category-style-1">{{ $post->rel_to_category->category_name }}</a>
                                 </li>
                                 <li class="post-date"> <span class="line"></span> {{ $post->created_at->diffForHumans() }}</li>
                             </ul>

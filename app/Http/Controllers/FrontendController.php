@@ -47,4 +47,12 @@ class FrontendController extends Controller
         ]);
 
     }
+    function category_post($category_id){
+        $category = Category::find($category_id);
+        $posts = Post::where('category_id',$category_id)->paginate(3);
+        return view('frontend.category_post',[
+            'category'=>$category,
+            'posts'=>$posts,
+        ]);
+    }
 }
