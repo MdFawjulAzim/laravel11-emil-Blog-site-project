@@ -86,7 +86,7 @@
                         <i class="las la-search"></i>
                     </div>
                     <!--button-subscribe-->
-                    <div class="botton-sub">
+                    {{-- <div class="botton-sub">
                         @auth('author')
                         <div class="dropdown">
                             <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false" 
@@ -105,7 +105,58 @@
                          <a href="{{ route('author.login.page') }}" class="btn-subscribe">Sign in</a>
                         @endauth
                        
-                    </div>
+                    </div> --}}
+                    @auth('author')
+                    <li class="nav-item dropdown nav-profile">
+                        <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="authorDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            @if (Auth::guard('author')->user()->photo == null)
+                                <img src="{{ asset('frontend_asset') }}/img/author/1.jpg" alt="" style="width:40px; height:40px; border-radius:50%; object-fit:cover;">
+                            @else
+                                <img src="{{ asset('uploads/author/'. Auth::guard('author')->user()->photo) }}" alt="" style="width:40px; height:40px; border-radius:50%; object-fit:cover;">
+                            @endif
+                            <span class="ml-2">{{ Auth::guard('author')->user()->name }}</span>
+                        </a>                                  
+                        <div class="dropdown-menu" aria-labelledby="authorDropdown">
+                            <div class="dropdown-header d-flex flex-column align-items-center">
+                                <div class="figure mb-3">
+                                    @if (Auth::guard('author')->user()->photo == null)
+                                        <img src="{{ asset('frontend_asset') }}/img/author/1.jpg" alt="" style="width:80px; height:80px; border-radius:50%; object-fit:cover;">
+                                    @else
+                                        <img src="{{ asset('uploads/author/'. Auth::guard('author')->user()->photo) }}" alt="" style="width:80px; height:80px; border-radius:50%; object-fit:cover;">
+                                    @endif
+                                </div>
+                                <div class="info text-center">
+                                    <p class="name font-weight-bold mb-0">{{ Auth::guard('author')->user()->name }}</p>
+                                </div>
+                            </div>
+                            <div class="dropdown-body">
+                                <ul class="profile-nav p-0 pt-3">
+                                    <li class="nav-item">
+                                        <a href="{{ route('author.dashboard') }}" class="nav-link">
+                                            <i data-feather="layout"></i>
+                                            <span>Admin Panel</span>
+                                        </a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="dropdown-item nav-link border-0 bg-transparent" href="{{ route('author.logout') }}">
+                                            <i data-feather="log-out"></i>
+                                            <span>Logout</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                @else
+                    <a href="{{ route('author.login.page') }}" class="btn-subscribe">Sign in</a>
+                @endauth
+
+                    
+                    
+                    
+                    
+                    
                     <!--navbar-toggler-->
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -215,7 +266,10 @@
     </div>
 
 
-
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script>
+        feather.replace()
+     </script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="{{ asset('frontend_asset') }}/js/jquery.min.js"></script>
     <script src="{{ asset('frontend_asset') }}/js/popper.min.js"></script>
