@@ -57,7 +57,7 @@
                             <div class="image">
                                 <img src="{{ asset('uploads/category') }}/{{ $category->category_image }}" alt="">
                             </div>
-                            <p>{{ $category->category_name }} <span>10</span> </p>
+                            <p>{{ $category->category_name }} <span>{{ App\models\Post::where('category_id',$category->id)->count() }}</span> </p>
                         </a>
                         @endforeach
                     </div>
