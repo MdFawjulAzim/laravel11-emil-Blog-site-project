@@ -143,38 +143,35 @@
                             </div>
                         </div>
 
-                        <!--popular-posts-->
-                        <div class="widget">
-                            <div class="widget-title">
-                                <h5>popular Posts</h5>
-                            </div>
+                       <!-- popular-posts -->
+                    <div class="widget">
+                        <div class="widget-title">
+                            <h5>Popular Posts</h5>
+                        </div>
 
-                            <ul class="widget-popular-posts">
-                                @forelse ($popular_posts as $popular )
-                                    <!--post1-->
+                        <ul class="widget-popular-posts">
+                            @forelse ($popular_posts as $popular)
+                                <!-- Single Popular Post -->
                                 <li class="small-post">
                                     <div class="small-post-image">
                                         <a href="{{ route('post.details', $popular->rel_to_post->slug) }}">
-                                            <img src="{{ asset('uploads/post/thumbnail') }}/{{ $popular->rel_to_post->thumbnail }}" alt="">
+                                            <img src="{{ asset('uploads/post/thumbnail/' . $popular->rel_to_post->thumbnail) }}" alt="{{ $popular->rel_to_post->title }}">
                                             <small class="nb">{{ $popular->total_read }}</small>
                                         </a>
                                     </div>
                                     <div class="small-post-content">
                                         <p>
-                                         <!-- সংশোধিত -->
-                                        <a href="{{ route('post.details', $popular->rel_to_post->slug) }}">{{ $popular->rel_to_post->title }}</a>
+                                            <a href="{{ route('post.details', $popular->rel_to_post->slug) }}">{{ $popular->rel_to_post->title }}</a>
                                         </p>
-                                        <small> <span class="slash"></span>{{$popular->rel_to_post->created_at->diffForHumans()}}</small>
+                                        <small><span class="slash"></span> {{ $popular->rel_to_post->created_at->diffForHumans() }}</small>
                                     </div>
                                 </li>
-                                @empty
-                                    <h2>No Popular Post available</h2>
-                                @endforelse
-                                
+                            @empty
+                                <h2>No Popular Post available!</h2>
+                            @endforelse
+                        </ul>
+                    </div>
 
-            
-                            </ul>
-                        </div>
 
                         <!--newslatter-->
                         <div class="widget widget-newsletter">

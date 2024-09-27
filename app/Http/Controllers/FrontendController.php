@@ -16,7 +16,9 @@ class FrontendController extends Controller
         $tags = Tag::all();
         $posts = Post::where('status',1)->paginate(3);
         $sliders = Post::where('status',1)->latest()->take(3)->get();
-        $popular_posts=popular::where('total_read','>=',5)->get();
+        $popular_posts = Popular::where('total_read', '>=', 5)
+        ->orderBy('total_read', 'desc') // অবরোহণক্রমে সাজানো
+        ->get();
 
 
         return view('frontend.index',[
