@@ -92,6 +92,10 @@ Route::get('/my/post/details/{slug}',[FrontendController::class,'post_details'])
 Route::get('/author/post/{author_id}',[FrontendController::class,'author_post'])->name('author.post');
 Route::get('/category/post/{category_id}',[FrontendController::class,'category_post'])->name('category.post');
 
+//search
+Route::get('/search',[FrontendController::class,'search'])->name('search');
+
+
 
 
 

@@ -55,4 +55,25 @@ class FrontendController extends Controller
             'posts'=>$posts,
         ]);
     }
+    function search(Request $request){
+        $data = $request->all();
+
+        $search_posts = Post ::where(function($q) use ($data){
+            if( !empty($data['q']) && $data ['q'] != '' && $data ['q'] != 'undefined' ){
+            $q->where(function($q) use ($data){
+                $q->where('title','LIKE','%'.$data['q'].'%');
+                $q->orwhere('desp','LIKE','%'.$data['q'].'%');
+                
+
+            });
+        }
+
+        })->paginate(3);
+        return view('frontend.search', [
+            'search_posts' => $search_posts,
+        ]);
+        
+        
+
+    }
 }
