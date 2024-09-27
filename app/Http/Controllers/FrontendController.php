@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Author;
 use App\Models\Category;
+use App\Models\popular;
 use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Http\Request;
@@ -15,11 +16,15 @@ class FrontendController extends Controller
         $tags = Tag::all();
         $posts = Post::where('status',1)->paginate(3);
         $sliders = Post::where('status',1)->latest()->take(3)->get();
+        $popular_posts=popular::where('total_read','>=',5)->get();
+
+
         return view('frontend.index',[
             'categories'=> $categories,
             'tags'=>$tags,
             'posts'=>$posts,
             'sliders'=>$sliders,
+            'popular_posts'=>$popular_posts,
         ]);
     }
 
@@ -32,7 +37,21 @@ class FrontendController extends Controller
     }
 
     function post_details($slug){
+        
         $post = Post::where('slug',$slug)->first();
+
+        if(popular::where('post_id',$post->id)->exists()){
+            popular::where('post_id',$post->id)->increment('total_read',1);
+
+        }else{
+            popular::insert([
+                'post_id' => $post->id,
+                'total_read'=>1,
+            ]);
+        }
+       
+
+
         return view('frontend.post_details ',[
                 'post'=>$post,
         ]);
