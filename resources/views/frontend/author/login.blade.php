@@ -30,7 +30,7 @@
                             <a href="#" class="btn-link ">Forgot Password?</a>
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn-custom">Login in</button>
+                            <button type="submit" class="btn-custom">Log In</button>
                         </div>
                         <p class="form-group text-center">Don't have an account? <a href="{{ route('author.register.page') }}" class="btn-link">Create One</a> </p>
                     </form>
