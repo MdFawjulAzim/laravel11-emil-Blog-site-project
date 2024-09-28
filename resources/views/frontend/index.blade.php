@@ -175,18 +175,24 @@
 
                         <!--newslatter-->
                         <div class="widget widget-newsletter">
-                            <h5>Subscribe To Our Newsletter</h5>
+                            <h5 id="newsletter-heading">Subscribe To Our Newsletter</h5> <!-- Heading এর জন্য একটি ID যোগ করা -->
                             <p>No spam, notifications only about new products, updates.</p>
-                            <form action="#" class="newslettre-form">
+                        
+                            <form action="{{ route('subscriptions.subscribe') }}" method="POST" class="newslettre-form" id="subscriptionForm">
+                                @csrf
                                 <div class="form-flex">
                                     <div class="form-group">
-                                        <input type="email" class="form-control" placeholder="Your Email Adress"
-                                            required="required">
+                                        <input type="email" name="email" class="form-control" placeholder="Your Email Address" required="required">
                                     </div>
                                     <button class="btn-custom" type="submit">Subscribe now</button>
                                 </div>
                             </form>
+                        
+                            @if (session('success'))
+                                <div class="alert alert-success" id="success-message">{{ session('success') }}</div> <!-- Success message এর জন্য ID যুক্ত করা -->
+                            @endif
                         </div>
+                        
 
                         <!--stay connected-->
                         <div class="widget ">
@@ -252,6 +258,18 @@
     window.location.href = link;
     
 });
+</script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        // যদি success message পাওয়া যায়, তাহলে newsletter-heading অংশ থেকে স্ক্রল শুরু করো
+        @if(session('success'))
+            $('html, body').animate({
+                scrollTop: $('#newsletter-heading').offset().top // Heading এর উপরের অংশ থেকে স্ক্রল হবে
+            }, 1000); // ১ সেকেন্ডে স্ক্রল করবে
+        @endif
+    });
 </script>
 
 @endsection

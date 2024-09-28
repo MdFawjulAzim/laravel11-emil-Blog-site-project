@@ -6,6 +6,7 @@ use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SubscriptionsController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -99,6 +100,10 @@ Route::get('/search',[FrontendController::class,'search'])->name('search');
 Route::get('/tag/post/{tag_id}',[FrontendController::class,'tag_post'])->name('tag.post');
 
 
+//subscriptions
+
+// সাবস্ক্রিপশন রুট
+Route::post('/subscribe', [SubscriptionsController::class, 'subscribe'])->name('subscriptions.subscribe');
 
 
 
