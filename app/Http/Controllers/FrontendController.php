@@ -97,4 +97,37 @@ class FrontendController extends Controller
         
 
     }
+    function tag_post($tag_id){
+        $all='';
+        foreach(Post::all() as $post){
+            $after_explode = explode(',', $post->tags);
+            if(in_array($tag_id, $after_explode)){
+                $all.=$post->id.',';
+            }
+        }
+        $explode2=explode(',',$all);
+        $tag_post =Post::find($explode2);
+
+
+        $tag=Tag::find($tag_id);
+
+        return view('frontend.tag_post',[
+            'tag_post'=>$tag_post,
+            'tag'=>$tag,
+        ]);
+    }
+
+    // function tag_post($tag_id) {
+    //     // Fetch posts that contain the $tag_id in the 'tags' column (comma-separated)
+    //     $tag_post = Post::whereRaw("FIND_IN_SET(?, tags)", [$tag_id])->paginate(10); // Assuming you want pagination
+    
+    //     // Find the tag by its ID
+    //     $tag = Tag::find($tag_id);
+    
+    //     return view('frontend.tag_post', [
+    //         'tag_post' => $tag_post,
+    //         'tag' => $tag,
+    //     ]);
+    // }
+    
 }

@@ -95,6 +95,9 @@ Route::get('/category/post/{category_id}',[FrontendController::class,'category_p
 //search
 Route::get('/search',[FrontendController::class,'search'])->name('search');
 
+//tags
+Route::get('/tag/post/{tag_id}',[FrontendController::class,'tag_post'])->name('tag.post');
+
 
 
 
