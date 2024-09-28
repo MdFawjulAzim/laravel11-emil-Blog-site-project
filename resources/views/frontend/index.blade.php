@@ -174,8 +174,8 @@
 
 
                         <!--newslatter-->
-                        <div class="widget widget-newsletter">
-                            <h5 id="newsletter-heading">Subscribe To Our Newsletter</h5> <!-- Heading এর জন্য একটি ID যোগ করা -->
+                        <div id="newsletter-heading" class="widget widget-newsletter">
+                            <h5 >Subscribe To Our Newsletter</h5> 
                             <p>No spam, notifications only about new products, updates.</p>
                         
                             <form action="{{ route('subscriptions.subscribe') }}" method="POST" class="newslettre-form" id="subscriptionForm">
@@ -189,7 +189,7 @@
                             </form>
                         
                             @if (session('success'))
-                                <div class="alert alert-success" id="success-message">{{ session('success') }}</div> <!-- Success message এর জন্য ID যুক্ত করা -->
+                                <div class="alert alert-success" id="success-message">{{ session('success') }}</div> 
                             @endif
                         </div>
                         
@@ -263,11 +263,11 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function() {
-        // যদি success message পাওয়া যায়, তাহলে newsletter-heading অংশ থেকে স্ক্রল শুরু করো
+    
         @if(session('success'))
             $('html, body').animate({
-                scrollTop: $('#newsletter-heading').offset().top // Heading এর উপরের অংশ থেকে স্ক্রল হবে
-            }, 1000); // ১ সেকেন্ডে স্ক্রল করবে
+                scrollTop: $('#newsletter-heading').offset().top 
+            }, 1000); 
         @endif
     });
 </script>

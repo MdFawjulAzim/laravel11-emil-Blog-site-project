@@ -102,8 +102,9 @@ Route::get('/tag/post/{tag_id}',[FrontendController::class,'tag_post'])->name('t
 
 //subscriptions
 
-// সাবস্ক্রিপশন রুট
 Route::post('/subscribe', [SubscriptionsController::class, 'subscribe'])->name('subscriptions.subscribe');
+
+
 
 
 
