@@ -51,7 +51,7 @@
                                 <ul class="list-inline">
                                     @foreach ($after_explode as $tag)
                                     <li >
-                                        <a href="blog-layout-2.html">{{ 
+                                        <a href="{{ route('tag.post',App\models\Tag::where('id',$tag)->first()->id) }}">{{ 
                                             App\models\Tag::where('id',$tag)->first()->tag_name
                                             }}</a>
                                     </li>

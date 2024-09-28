@@ -91,7 +91,7 @@
  </div> --}}
  <div class="row">
     <div class="col-lg-12 d-flex justify-content-center">
-        {{ $posts->links('vendor.pagination.custom') }}
+        {{ $posts->links() }}
     </div>
 </div>
 

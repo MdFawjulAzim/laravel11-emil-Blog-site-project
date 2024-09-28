@@ -41,6 +41,7 @@ class FrontendController extends Controller
     function post_details($slug){
         
         $post = Post::where('slug',$slug)->first();
+        
 
         if(popular::where('post_id',$post->id)->exists()){
             popular::where('post_id',$post->id)->increment('total_read',1);
@@ -90,8 +91,17 @@ class FrontendController extends Controller
         }
 
         })->paginate(3);
+        $tags = Tag::all();
+        $categories = Category::all();
+        $popular_posts = Popular::where('total_read', '>=', 5)
+        ->orderBy('total_read', 'desc') // অবরোহণক্রমে সাজানো
+        ->get();
         return view('frontend.search', [
             'search_posts' => $search_posts,
+            'tags'=>$tags,
+            'categories'=>$categories,
+            'popular_posts'=>$popular_posts,
+        
         ]);
         
         
