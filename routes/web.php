@@ -104,7 +104,12 @@ Route::get('/tag/post/{tag_id}',[FrontendController::class,'tag_post'])->name('t
 
 Route::post('/subscribe', [SubscriptionsController::class, 'subscribe'])->name('subscriptions.subscribe');
 
+// admin panel subscriptions show
+Route::middleware('auth')->group(function () {
+    Route::get('/admin/subscriptions', [SubscriptionsController::class, 'showSubscriptions'])->name('admin.subscriptions');
+});
 
+Route::get('/admin/subscriptions/delete/{id}', [SubscriptionsController::class, 'delete'])->name('subscriptions.delete');
 
 
 
