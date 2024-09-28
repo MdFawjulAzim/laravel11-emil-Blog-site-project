@@ -58,7 +58,8 @@
                                     @endforeach
                                 </ul>
                             </div>
-                            <div class="social-media">
+                            {{-- //share social media --}}
+                            {{-- <div class="social-media">
                                 <p>Share on :</p>
                                 <ul class="list-inline">
                                     <li>
@@ -87,7 +88,52 @@
                                         </a>
                                     </li>
                                 </ul>
-                            </div>                      
+                            </div>                       --}}
+                            <div class="social-media">
+                                <p>Share on :</p>
+                                <ul class="list-inline">
+                                    {{-- <li>
+                                        <a href="#">
+                                            <i class="fab fa-facebook"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fab fa-instagram"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fab fa-twitter"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" >
+                                            <i class="fab fa-youtube"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" >
+                                            <i class="fab fa-pinterest"></i>
+                                        </a>
+                                    </li> --}}
+                                    {!! Share::currentPage()
+                                    ->facebook()
+                                    ->twitter()
+                                    ->linkedin('Extra linkedin summary can be passed here')
+                                    ->whatsapp() !!}
+
+
+                                </ul>
+                            </div>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
                         </div>
 
                         <!--post-single-author-->

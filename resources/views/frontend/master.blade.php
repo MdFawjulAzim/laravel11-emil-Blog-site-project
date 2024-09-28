@@ -14,6 +14,34 @@
     <!-- Title -->Stay Connected
     <title> Oredoo - Personal Blog HTML Template </title>
 
+    <style>
+        .social-media ul li { margin-right: 10px;
+
+        }
+        .social-media ul li a span{ 
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            background-color: blue;
+            color:white;
+            border-radius: 60%;
+        }
+        .social-media ul li a .fa-facebook-square{
+            background-color: #1877F2;
+        }
+        .social-media ul li a .fa-linkedin{
+            background-color: #0077B5;
+        }
+        .social-media ul li a .fa-whatsapp{
+            background-color: #25D366;
+        }
+        .social-media ul li a .fa-twitter{
+            background-color: #1DA1F2;
+        }
+
+    </style>
+
     <!-- CSS Plugins -->
     <link rel="stylesheet" href="{{ asset('frontend_asset') }}/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('frontend_asset') }}/css/owl.carousel.css">
@@ -283,6 +311,8 @@
     <script src="{{ asset('frontend_asset') }}/js/owl.carousel.min.js"></script>
     <script src="{{ asset('frontend_asset') }}/js/switch.js"></script>
     <script src="{{ asset('frontend_asset') }}/js/jquery.marquee.js"></script>
+
+    <script src="{{ asset('js/share.js') }}"></script>
 
 
     <!-- JS main  -->
