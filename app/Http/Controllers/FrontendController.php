@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Author;
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\popular;
 use App\Models\Post;
 use App\Models\Tag;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FrontendController extends Controller
 {
@@ -52,11 +55,14 @@ class FrontendController extends Controller
                 'total_read'=>1,
             ]);
         }
+        $comments=Comment::with('replies')->where('post_id',$post->id)->whereNull('parent_id')->get();
+
        
 
 
         return view('frontend.post_details ',[
                 'post'=>$post,
+                'comments'=>$comments,
         ]);
     }
     
@@ -139,5 +145,16 @@ class FrontendController extends Controller
     //         'tag' => $tag,
     //     ]);
     // }
+    function comment_store(Request $request){
+        Comment::insert([
+            'author_id' => Auth::guard('author')->id(),
+            'post_id' =>$request->post_id,
+            'comments' =>$request->comments,
+            'parent_id' =>$request->parent_id,
+            'created_at' =>Carbon::now(), 
+
+        ]);
+        return back();
+    }
     
 }

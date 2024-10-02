@@ -111,7 +111,8 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/admin/subscriptions/delete/{id}', [SubscriptionsController::class, 'delete'])->name('subscriptions.delete');
 
+//comments
+Route::post('/comment/store', [FrontendController::class, 'comment_store'])->name('comment.store');
 
 
 
-ff
