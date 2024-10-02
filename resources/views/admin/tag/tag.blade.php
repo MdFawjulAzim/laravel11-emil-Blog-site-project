@@ -1,6 +1,9 @@
 @extends('layouts.admin')
 
 @section('content')
+@can('tag_access')
+    
+
 <div class="row">
     <div class="col-lg-8">
         <div class="card">
@@ -57,5 +60,10 @@
         </div>
     </div>
 </div>
+
+@else
+<h3>You Don't Have Access To This Page!</h3>
+
+@endcan
 
 @endsection

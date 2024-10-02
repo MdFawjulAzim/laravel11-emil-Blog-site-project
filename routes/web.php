@@ -6,6 +6,7 @@ use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SubscriptionsController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\UserController;
@@ -116,3 +117,13 @@ Route::post('/comment/store', [FrontendController::class, 'comment_store'])->nam
 
 
 
+//Role
+Route::get('/role', [RoleController::class, 'role'])->name('role');
+Route::post('/permission/store', [RoleController::class, 'permission_store'])->name('permission.store');
+Route::post('/role/store', [RoleController::class, 'role_store'])->name('role.store');
+
+Route::post('/role/assign', [RoleController::class, 'role_assign'])->name('role.assign');
+
+//role delete
+Route::get('/role/delete/{role_id}', [RoleController::class, 'role_delete'])->name('role.delete');
+Route::get('/role/remove/{user_id}', [RoleController::class, 'role_remove'])->name('role.remove');

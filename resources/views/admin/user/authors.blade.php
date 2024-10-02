@@ -1,6 +1,9 @@
 @extends('layouts.admin')
 @section('content')
    <div class="row">
+    @can('authors')
+        
+    
     <div class="col-lg-10">
         <div class="card">
             <div class="card-header bg-primary">
@@ -48,6 +51,9 @@
          </div>
         </div>
     </div>
+    @else
+<h3>You Don't Have Access To This Page!</h3>
+    @endcan
    </div>
 
 @endsection

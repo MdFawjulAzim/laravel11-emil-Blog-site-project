@@ -1,6 +1,9 @@
 @extends('layouts.admin')
 @section('content')
 <div class="row">
+    @can('category_access')
+        
+    
     <div class="col-lg-8">
         <div class="card">
             <div class="card-header bg-primary">
@@ -61,6 +64,10 @@
             </div>
         </div>
     </div>
+    @else
+<h3>You Don't Have Access To This Page!</h3>
+    @endcan
+    @can('category_add')
     <div class="col-lg-4">
         <div class="card">
             <div class="card-header bg-primary">
@@ -99,6 +106,9 @@
             </div>
         </div>
     </div>
+    @else
+<h3>You Don't Have Access To This Page!</h3>
+    @endcan
 </div>
 @endsection
 
