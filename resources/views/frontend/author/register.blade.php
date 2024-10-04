@@ -8,8 +8,11 @@
                 <div class="login-content">
                     <h4>Sign up</h4>
                     <!--form-->
-                    @if(session('author_register'))
+                    {{-- @if(session('author_register'))
                     <div class="alert alert-success">{{ session('author_register') }}</div>
+                    @endif --}}
+                    @if(session('verify'))
+                    <div class="alert alert-success">{{ session('verify') }}</div>
                     @endif
                         
                                

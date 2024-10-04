@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\AuthorVerifyMail;
 use App\Models\Author;
+use App\Models\EmailVerify;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
@@ -11,6 +13,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
 use Intervention\Image\Drivers\Gd\Driver;
 use Intervention\Image\ImageManager;
+use Illuminate\Support\Facades\Mail;
 
 class AuthorController extends Controller
 {
@@ -26,13 +29,28 @@ class AuthorController extends Controller
 
 
         ]);
-        Author::insert([
+        $author_id =Author::insertGetId([
             'name'=>$request->name,
             'email'=>$request->email,
             'password'=>bcrypt($request->password),
             'created_at'=>Carbon::now(),
         ]);
-        return back()->with('author_register','Registrations Success!Your Account is pending for Approval!We will get confirmation mail when your account will active!');
+
+        $author = EmailVerify::create([
+            'author_id'=>$author_id,
+            'token'=>uniqid(),
+            
+
+        ]);
+
+
+
+        
+        Mail::to($request->email)->send(new AuthorVerifyMail($author));
+        
+
+        // return back()->with('author_register','Registrations Success!Your Account is pending for Approval!We will get confirmation mail when your account will active!');
+        return back()->with('verify',"We have sent you a verification email to $request->email!");
         
     }
 
@@ -120,6 +138,11 @@ class AuthorController extends Controller
         } else {
             return back()->with('err', 'Current Password Does Not Match!');
         }
+    }
+
+    function author_verify(){
+
+
     }
     
 }

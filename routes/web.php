@@ -72,6 +72,11 @@ Route::get('/authors/edit',[AuthorController::class,'author_edit'])->name('autho
 Route::post('/authors/profile/update',[AuthorController::class,'author_profile_update'])->name('author.profile.update');
 Route::post('/authors/pass/update',[AuthorController::class,'author_pass_update'])->name('author.pass.update');
 
+//Email Verification
+Route::get('author/verify',[AuthorController::class,'author_verify'])->name('author.verify');
+
+
+
 
 
 
