@@ -141,7 +141,7 @@ class AuthorController extends Controller
     }
 
     function author_verify(){
-
+        return aaa;
 
     }
     
