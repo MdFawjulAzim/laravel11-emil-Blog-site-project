@@ -9,8 +9,15 @@
                 <div class="login-content">
                     <h4>Login</h4>
                     <p></p>
+                    @if(session('not_verify'))
+                    <div class="alert alert-danger">{{ session('not_verify') }} <strong><a href="{{ route('request.verify') }}">Request For Verification Link</a></strong></div>
+                    @endif
                     @if(session('pending'))
-                    <div class="alert alert-danger">{{ session('pending') }}</div>
+                    <div class="alert alert-warning">{{ session('pending') }} </div>
+                    @endif
+                    
+                    @if(session('verified'))
+                    <div class="alert alert-success">{{ session('verified') }}</div>
                     @endif
                     <form  action="{{ route('author.login') }}" class="sign-form widget-form " method="POST">
                         @csrf

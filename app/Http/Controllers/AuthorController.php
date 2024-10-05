@@ -55,23 +55,34 @@ class AuthorController extends Controller
     }
 
     function author_login(Request $request){
-        if(Author::where('email',$request->email)->exists()){
-            if(Auth::guard('author')->attempt(['email'=>$request->email,'password'=>$request->password])){
-                if(Auth::guard('author')->user()->status != 1){
+        // Check if the email exists in the database
+        if (Author::where('email', $request->email)->exists()) {
+            // Attempt to authenticate with email and password
+            if (Auth::guard('author')->attempt(['email' => $request->email, 'password' => $request->password])) {
+                // Check if email is verified
+                if (Auth::guard('author')->user()->email_verified_at != null) {
+                    // Check if account status is approved
+                    if (Auth::guard('author')->user()->status != 1) {
+                        Auth::guard('author')->logout();
+                        return back()->with('pending', 'Your Account Is Pending For Approval!');
+                    } else {
+                        return redirect()->route('index');
+                    }
+                } else {
                     Auth::guard('author')->logout();
-                    return back()->with('pending','Your Account Is Pending For Approval!');
-                }else{
-                    return redirect()->route('index');
+                    return back()->with('not_verify', 'Your Email Is Not Verified!');
                 }
-
-            }else{
-                return back()->with('pass_wrong','Wrong Password!');
+            } else {
+                // Password is wrong
+                return back()->with('pass_wrong', 'Wrong Password!');
             }
-
-        }else{
-            return back()->with('exist','Email Does Not Exist!');
+        } else {
+            // Email does not exist
+            return back()->with('exist', 'Email Does Not Exist!');
         }
     }
+    
+    
 
     function author_logout(){
         Auth::guard('author')->logout();
@@ -140,9 +151,43 @@ class AuthorController extends Controller
         }
     }
 
-    function author_verify(){
-        return aaa;
+    function author_verify($token){
+        $author = EmailVerify::where('token', $token)->first();
+
+        if(EmailVerify::where('token',$token)->exists()){
+            Author::find($author->author_id)->update([
+                'email_verified_at'=>Carbon::now(),
+               
+            ]);
+            EmailVerify::where('token', $token)->delete();
+
+          return redirect()->route('author.login.page')->with('verified','Your Email is Verified!');
+        }else{
+            abort('404');
+        }
 
     }
+
+    function request_verify(){
+        return view ('frontend.author.request_verify');
+    }
+
+    function request_verify_send(Request $request){
+        $author = Author::where('email',$request->email)->first();
+        if(EmailVerify::where('author_id',$author->id)->exists()){
+            EmailVerify::where('author_id',$author->id)->delete();
+        }
+
+        $author = EmailVerify::create([
+            'author_id'=>$author->id,
+            'token'=>uniqid(),
+            
+        ]);
+        
+        Mail::to($request->email)->send(new AuthorVerifyMail($author));
+
+        return back()->with('verify',"We have sent you a verification email to $request->email!");
+    }
+    
     
 }
