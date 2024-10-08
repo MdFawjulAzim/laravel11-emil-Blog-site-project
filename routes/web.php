@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PassRestController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
@@ -78,6 +79,16 @@ Route::get('author/verify/{token}',[AuthorController::class,'author_verify'])->n
 //request verification
 Route::get('request/verify',[AuthorController::class,'request_verify'])->name('request.verify');
 Route::post('request/verify/send',[AuthorController::class,'request_verify_send'])->name('request.verify.send');
+
+//Password Reset Password
+Route::get('pass/reset/req',[PassRestController::class,'pass_reset_req'])->name('pass.reset.req');
+
+//Password Reset Request Password
+Route::post('pass/reset/req/send',[PassRestController::class,'pass_reset_req_post'])->name('pass.reset.req.post');
+//Password Reset From
+Route::get('pass/reset/form/{token}',[PassRestController::class,'pass_reset_form'])->name('pass.reset.form');
+
+Route::post('pass/reset/update/{token}',[PassRestController::class,'pass_reset_update'])->name('pass.reset.update');
 
 
 

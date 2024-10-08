@@ -13,7 +13,10 @@
                     <div class="alert alert-danger">{{ session('not_verify') }} <strong><a href="{{ route('request.verify') }}">Request For Verification Link</a></strong></div>
                     @endif
                     @if(session('pending'))
-                    <div class="alert alert-warning">{{ session('pending') }} </div>
+                    <div class="alert alert-success">{{ session('pending') }} </div>
+                    @endif
+                    @if(session('reset'))
+                    <div class="alert alert-success">{{ session('reset') }} </div>
                     @endif
                     
                     @if(session('verified'))
@@ -34,7 +37,7 @@
                             @endif
                         </div>
                         <div class="sign-controls form-group">
-                            <a href="#" class="btn-link ">Forgot Password?</a>
+                            <a href="{{ route('pass.reset.req') }}" class="btn-link ">Forgot Password?</a>
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn-custom">Log In</button>
