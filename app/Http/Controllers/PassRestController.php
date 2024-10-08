@@ -20,14 +20,12 @@ class PassRestController extends Controller
         if(Author::where('email',$request->email)->exists()){
           if(PassReset::where ('author_id',$Author_info->id)->exists()){
             PassReset::where ('author_id',$Author_info->id)->delete();
-
           }
           $author = PassReset::create([
             'author_id'=>$Author_info->id,
             'token'=>uniqid(),
         ]);
         Notification::send($Author_info, new PassResetNotification($author));
-
         return back()->with('success',"We Have Sent You a Password Reset Link To $request->email!");
         }else{
                 return back()->with('exist','Email not found!');

@@ -10,6 +10,9 @@
                     @if (session('link'))
                     <div class="alert alert-info">{{ session('link') }}</div>
                     @endif
+                    @if (session('success'))
+                    <div class="alert alert-info">{{ session('success') }}</div>
+                    @endif
                     <form  action="{{ route('pass.reset.req.post') }}" class="sign-form widget-form " method="POST">
                         @csrf
                         <div class="form-group">
