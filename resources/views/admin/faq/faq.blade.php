@@ -24,7 +24,7 @@
                         <tr>
                             <td>{{ $key + 1 }}</td>
                             <td>{{ $faq->question }}</td>
-                            <td>{{ Str::substr($faq->answer,0,40).'....' }}</td>
+                            <td>{{ Str::substr($faq->answer, 0, 40) . '....' }}</td>
                             <td>
                                 <div class="action-buttons">
                                     <a href="{{ route('faq.show', $faq->id) }}" class="btn btn-info btn-sm">View</a>
