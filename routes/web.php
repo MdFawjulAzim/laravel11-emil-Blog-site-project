@@ -13,6 +13,8 @@ use App\Http\Controllers\SubscriptionsController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ContactMessageController;
 
 //Frontend
 Route::get('/',[FrontendController::class,'index'])->name('index');
@@ -24,6 +26,27 @@ Route::get('/author/list',[FrontendController::class,'author_list'])->name('auth
 
 //blog list show page
 Route::get('/all/posts', [FrontendController::class, 'all_posts'])->name('all.posts');
+
+//contact list show page
+
+// Route for displaying the contact page
+Route::get('/contact', function () {
+    return view('frontend.author.contact');
+})->name('contact');
+
+// Route for handling the form submission
+Route::post('/contact', [ContactController::class, 'submit'])->name('contact.submit');
+
+
+
+// Route for displaying contact messages in the admin panel
+Route::get('/admin/contact-messages', [ContactMessageController::class, 'index'])->name('admin.contact.messages');
+Route::delete('/admin/contact-messages/{id}', [ContactMessageController::class, 'destroy'])->name('admin.contact.messages.delete');
+
+
+
+
+
 
 
 

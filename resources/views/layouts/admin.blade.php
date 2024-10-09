@@ -126,27 +126,25 @@
                 <li class="nav-item">
                   <a href="{{ route('faq.index') }}" class="nav-link">List All FAQ </a>
                 </li>
-                
               </ul>
             </div>
           </li>
+
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#tables" role="button" aria-expanded="false" aria-controls="tables">
               <i class="link-icon" data-feather="layout"></i>
-              <span class="link-title">Table</span>
+              <span class="link-title">Contact</span>
               <i class="link-arrow" data-feather="chevron-down"></i>
             </a>
             <div class="collapse" id="tables">
               <ul class="nav sub-menu">
                 <li class="nav-item">
-                  <a href="../../pages/tables/basic-table.html" class="nav-link">Basic Tables</a>
-                </li>
-                <li class="nav-item">
-                  <a href="../../pages/tables/data-table.html" class="nav-link">Data Table</a>
+                  <a href="{{ route('admin.contact.messages') }}" class="nav-link">Contact Message</a>
                 </li>
               </ul>
             </div>
           </li>
+
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#icons" role="button" aria-expanded="false" aria-controls="icons">
               <i class="link-icon" data-feather="smile"></i>

@@ -1,5 +1,20 @@
 @extends('frontend.master')
 @section('content')
+<!-- Section Heading -->
+<div class="section-heading">
+    <div class="container-fluid">
+        <div class="section-heading-2">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-heading-2-title">
+                        <h1>Blogs</h1>
+                        <p class="links"><a href="{{ route('index') }}">Home <i class="las la-angle-right"></i></a> Blog</p>
+                    </div>
+                </div>  
+            </div>
+        </div>
+    </div>
+</div>
 <!-- Blog Layout-2-->
 <section class="blog-layout-2">
     <div class="container-fluid">
