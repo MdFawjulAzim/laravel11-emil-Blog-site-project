@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\FaqController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PassRestController;
@@ -153,3 +154,4 @@ Route::get('/role/remove/{user_id}', [RoleController::class, 'role_remove'])->na
 
 //Resource controller
 
+Route::resource('faq',FaqController::class);

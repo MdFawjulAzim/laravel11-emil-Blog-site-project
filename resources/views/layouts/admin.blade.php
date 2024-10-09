@@ -121,10 +121,10 @@
             <div class="collapse" id="charts">
               <ul class="nav sub-menu">
                 <li class="nav-item">
-                  <a href="../../pages/charts/apex.html" class="nav-link">Add FAQ</a>
+                  <a href="{{ route('faq.create') }}" class="nav-link">Add FAQ</a>
                 </li>
                 <li class="nav-item">
-                  <a href="../../pages/charts/chartjs.html" class="nav-link">List FAQ</a>
+                  <a href="{{ route('faq.index') }}" class="nav-link">List All FAQ </a>
                 </li>
                 
               </ul>
@@ -526,7 +526,7 @@
 
 			<!-- partial:../../partials/_footer.html -->
 			<footer class="footer d-flex flex-column flex-md-row align-items-center justify-content-between">
-				<p class="text-muted text-center text-md-left">Copyright © 2021 <a href="https://www.nobleui.com" target="_blank">NobleUI</a>. All rights reserved</p>
+				<p class="text-muted text-center text-md-left">Copyright © 2024 <a href="https://www.nobleui.com" target="_blank">Emil</a>. All rights reserved</p>
 				<p class="text-muted text-center text-md-left mb-0 d-none d-md-block">Handcrafted With <i class="mb-1 text-primary ml-1 icon-small" data-feather="heart"></i></p>
 			</footer>
 			<!-- partial -->
