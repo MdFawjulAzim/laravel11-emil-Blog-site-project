@@ -18,6 +18,9 @@ Route::get('/',[FrontendController::class,'index'])->name('index');
 Route::get('/author/login/page',[FrontendController::class,'author_login_page'])->name('author.login.page');
 Route::get('/author/register/page',[FrontendController::class,'author_register_page'])->name('author.register.page');
 
+//Author list page
+Route::get('/author/list',[FrontendController::class,'author_list'])->name('author.list');
+
 
 
 
@@ -147,3 +150,6 @@ Route::post('/role/assign', [RoleController::class, 'role_assign'])->name('role.
 //role delete
 Route::get('/role/delete/{role_id}', [RoleController::class, 'role_delete'])->name('role.delete');
 Route::get('/role/remove/{user_id}', [RoleController::class, 'role_remove'])->name('role.remove');
+
+//Resource controller
+

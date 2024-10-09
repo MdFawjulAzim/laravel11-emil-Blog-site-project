@@ -156,5 +156,12 @@ class FrontendController extends Controller
         ]);
         return back();
     }
+
+    function author_list(){
+        $authors = Author::where('status',1)->paginate(5);
+        return view('frontend.author.author_list',[
+            'authors'=>$authors,
+        ]);
+    }
     
 }
