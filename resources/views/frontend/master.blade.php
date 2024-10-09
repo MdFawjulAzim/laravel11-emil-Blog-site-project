@@ -223,10 +223,11 @@
                                     <p>Sign up for free and be the first to get notified about new posts.</p>
                                 </div>
 
-                                <form action="#" class="newslettre-form">
+                                <form action="{{ route('subscriptions.subscribe') }}" method="POST" class="newslettre-form" id="subscriptionForm">
+                                    @csrf
                                     <div class="form-flex">
                                         <div class="form-group">
-                                            <input type="email" class="form-control" placeholder="Your Email Adress"
+                                            <input type="email" name="email" class="form-control" placeholder="Your Email Adress"
                                                 required="required">
                                         </div>
                                         <button class="submit-btn" type="submit">
@@ -234,8 +235,14 @@
                                         </button>
                                     </div>
                                 </form>
+                                @if (session('success'))
+                                <div class="alert alert-success" id="success-message">{{ session('success') }}</div> 
+                                @endif
                             </div>
                         </div>
+
+
+                
                         <!--/-->
                         <div class="col-md-3">
                             <div class="menu">
@@ -257,7 +264,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="copyright">
-                                <p>© 2022, AssiaGroupe, All Rights Reserved.</p>
+                                <p>© 2024, Emil, All Rights Reserved.</p>
                             </div>
                         </div>
                     </div>

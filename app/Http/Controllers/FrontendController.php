@@ -67,11 +67,24 @@ class FrontendController extends Controller
     }
     
     function author_post($author_id){
+        $categories = Category::all();
+        $tags = Tag::all();
+        $sliders = Post::where('status',1)->latest()->take(3)->get();
+        $popular_posts = Popular::where('total_read', '>=', 5)
+        ->orderBy('total_read', 'desc') // অবরোহণক্রমে সাজানো
+        ->get();
+
+
+
         $author = Author::find($author_id);
         $posts = Post::where('author_id',$author_id)->where('status',1)->paginate(3);
         return view('frontend.author_post',[
             'author'=>$author,
             'posts'=>$posts,
+            'categories'=> $categories,
+            'tags'=>$tags,
+            'sliders'=>$sliders,
+            'popular_posts'=>$popular_posts,
         ]);
 
     }
