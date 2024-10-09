@@ -46,7 +46,7 @@ class PostController extends Controller
     
         $manager = new ImageManager(new Driver());
         $image = $manager->read($preview);
-        $image->resize(300, 300);
+        $image->resize(1000, 300);
         $image->save(public_path('uploads/post/preview/' . $preview_name));
     
         // Thumbnail image processing
@@ -56,7 +56,7 @@ class PostController extends Controller
     
         $manager = new ImageManager(new Driver());
         $image = $manager->read($thumbnail);
-        $image->resize(1000, 300);
+        $image->resize(500, 300);
         $image->save(public_path('uploads/post/thumbnail/' . $thumbnail_name));
     
         // Insert post data into the database

@@ -22,6 +22,10 @@ Route::get('/author/register/page',[FrontendController::class,'author_register_p
 //Author list page
 Route::get('/author/list',[FrontendController::class,'author_list'])->name('author.list');
 
+//blog list show page
+Route::get('/all/posts', [FrontendController::class, 'all_posts'])->name('all.posts');
+
+
 
 
 
@@ -40,7 +44,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-//profile
+//profile administration
 Route::post('add/user',[UserController::class,'add_user'])->middleware('auth')->name('add.user');
 Route::get('/users',[UserController::class,'users'])->middleware('auth')->name('users');
 Route::get('/edit/profile',[UserController::class,'edit_profile'])->middleware('auth')->name('edit.profile');
@@ -49,7 +53,7 @@ Route::post('/update/password',[UserController::class,'update_password'])->name(
 Route::post('/update/photo',[UserController::class,'update_photo'])->name('update.photo'); 
 Route::get('/user/delete/{user_id}',[UserController::class,'user_delete'])->name('user.delete'); 
 
-//Category
+//Category administration
 
 Route::get('/category',[CategoryController::class,'category'])->middleware('auth')->name('category');
 Route::get('/trash',[CategoryController::class,'trash'])->middleware('auth')->name('trash');
@@ -62,13 +66,13 @@ Route::get('/category/hard/delete/{category_id}',[CategoryController::class,'cat
 Route::post('/category/check_delete',[CategoryController::class,'category_check_delete'])->name('category.check.delete');
 Route::post('/category/check/restore',[CategoryController::class,'category_check_restore'])->name('category.check.restore');
 
-//tags
+//tags administration
 Route::get('/tags',[TagController::class,'tags'])->middleware('auth')->name('tags');
 Route::post('/tags/store',[TagController::class,'tags_store'])->name('tags.store');
 Route::get('/tags/delete/{tag_id}',[TagController::class,'tags_delete'])->name('tags.delete');
 
 
-//Authors
+//Authors 
 Route::post('/author/register/post',[AuthorController::class,'author_register'])->name('author.register');
 Route::post('/author/login/post',[AuthorController::class,'author_login'])->name('author.login');
 Route::get('/author/logout',[AuthorController::class,'author_logout'])->name('author.logout');
@@ -113,7 +117,7 @@ Route::get('/my/post/status/{post_id}',[PostController::class,'my_post_status'])
 Route::get('/my/post/delete/{post_id}',[PostController::class,'my_post_delete'])->name('my.post.delete');
 
 
-//Frontend Controller
+//Frontend Controller post
 Route::get('/my/post/details/{slug}',[FrontendController::class,'post_details'])->name('post.details');
 Route::get('/author/post/{author_id}',[FrontendController::class,'author_post'])->name('author.post');
 Route::get('/category/post/{category_id}',[FrontendController::class,'category_post'])->name('category.post');
@@ -155,3 +159,4 @@ Route::get('/role/remove/{user_id}', [RoleController::class, 'role_remove'])->na
 //Resource controller
 
 Route::resource('faq',FaqController::class);
+

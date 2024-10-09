@@ -163,5 +163,11 @@ class FrontendController extends Controller
             'authors'=>$authors,
         ]);
     }
+    // FrontendController e ekta method add koro jeta sob post dekhabe
+public function all_posts() {
+    $posts = Post::where('status',1)->paginate(5); // all posts load kore
+    return view('frontend.author.all_posts', compact('posts'));
+}
+
     
 }
