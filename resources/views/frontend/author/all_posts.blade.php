@@ -8,9 +8,9 @@
                 @foreach($posts as $post)
                     <!-- Each Post -->
                     <div class="post-list post-list-style2">
-                        <div class="post-list-image">
+                        <div class="post-list-image" style="width:45%">
                             <a href="{{ route('post.details', $post->slug) }}">
-                                <img src="{{ asset('uploads/post/thumbnail') }}/{{ $post->thumbnail }}" alt="">
+                                <img src="{{ asset('uploads/post/thumbnail') }}/{{ $post->thumbnail }}" alt="" >
                             </a>
                         </div>
                         <div class="post-list-content">
