@@ -41,30 +41,38 @@ class FrontendController extends Controller
         return view('frontend.author.register');
     }
 
-    function post_details($slug){
-        
-        $post = Post::where('slug',$slug)->first();
-        
-
-        if(popular::where('post_id',$post->id)->exists()){
-            popular::where('post_id',$post->id)->increment('total_read',1);
-
-        }else{
+    function post_details($slug) {
+        // Fetch the post based on the slug
+        $post = Post::where('slug', $slug)->first();
+    
+        // Check if the post exists
+        if (!$post) {
+            // Return a 404 response if the post is not found
+            abort(404, 'Post not found');
+            // Alternatively, you could redirect to another page:
+            // return redirect()->route('home')->with('error', 'Post not found');
+        }
+    
+        // If the post exists, update or insert the popular read count
+        if (popular::where('post_id', $post->id)->exists()) {
+            popular::where('post_id', $post->id)->increment('total_read', 1);
+        } else {
             popular::insert([
                 'post_id' => $post->id,
-                'total_read'=>1,
+                'total_read' => 1,
             ]);
         }
-        $comments=Comment::with('replies')->where('post_id',$post->id)->whereNull('parent_id')->get();
-
-       
-
-
-        return view('frontend.post_details ',[
-                'post'=>$post,
-                'comments'=>$comments,
+    
+        // Fetch comments related to the post
+        $comments = Comment::with('replies')->where('post_id', $post->id)->whereNull('parent_id')->get();
+    
+        // Return the view with the post and comments
+        return view('frontend.post_details', [
+            'post' => $post,
+            'comments' => $comments,
         ]);
     }
+    
     
     function author_post($author_id){
         $categories = Category::all();

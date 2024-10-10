@@ -8,8 +8,7 @@
                     <!--post-single-image-->
                     <div class="post-single-image">
                         <div class="post-single-image">
-                            <img src="{{ asset('uploads/post/preview') }}/{{ $post->preview }}" alt=""
-                                style="width: 100%; height: 500px;">
+                            <img src="{{ asset('uploads/post/preview') }}/{{ $post->preview }}" alt="">
                         </div>
 
                         <div class="post-single-body">
@@ -137,7 +136,7 @@
                             <div class="post-single-author ">
                                 <div class="authors-info">
                                     <div class="image">
-                                        <a href="author.html" class="image">
+                                        <a href="{{ route('author.post', $post->author_id) }}" class="image">
                                             @if ($post->rel_to_author->photo != null)
                                                 <img src="{{ asset('uploads/author/' . $post->rel_to_author->photo) }}"
                                                     alt="">
