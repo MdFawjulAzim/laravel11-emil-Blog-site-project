@@ -71,10 +71,10 @@ Route::middleware('auth')->group(function () {
 Route::post('add/user',[UserController::class,'add_user'])->middleware('auth')->name('add.user');
 Route::get('/users',[UserController::class,'users'])->middleware('auth')->name('users');
 Route::get('/edit/profile',[UserController::class,'edit_profile'])->middleware('auth')->name('edit.profile');
-Route::post('/update/profile',[UserController::class,'update_profile'])->name('update.profile'); 
-Route::post('/update/password',[UserController::class,'update_password'])->name('update.password'); 
-Route::post('/update/photo',[UserController::class,'update_photo'])->name('update.photo'); 
-Route::get('/user/delete/{user_id}',[UserController::class,'user_delete'])->name('user.delete'); 
+Route::post('/update/profile',[UserController::class,'update_profile'])->name('update.profile');
+Route::post('/update/password',[UserController::class,'update_password'])->name('update.password');
+Route::post('/update/photo',[UserController::class,'update_photo'])->name('update.photo');
+Route::get('/user/delete/{user_id}',[UserController::class,'user_delete'])->name('user.delete');
 
 //Category administration
 

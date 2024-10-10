@@ -43,6 +43,7 @@
                             <button type="submit" class="btn-custom">Log In</button>
                         </div>
                         <p class="form-group text-center">Don't have an account? <a href="{{ route('author.register.page') }}" class="btn-link">Create One</a> </p>
+                        <p class="form-group text-center">Admin? <a href="{{ route('dashboard') }}" class="btn-link">Log in as Admin</a></p>
                     </form>
                 </div> 
             </div>
