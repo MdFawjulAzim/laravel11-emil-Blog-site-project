@@ -2,7 +2,7 @@
 @section('content')
 
 <div class="row">
-    {{-- @can('users') --}}
+    @can('users')
         
     
     <div class="col-lg-8">
@@ -21,13 +21,13 @@
                         <th>Name</th>
                         <th>Email</th>
                         <th>Photo</th>
-                        {{-- @can('user_delete') --}}
+                        @can('user_delete')
                             
                        
                         <th>Action</th>
-                        {{-- @else
+                        @else
                         <h3>You Don't Have Access To This Page!</h3>
-                        @endcan --}}
+                        @endcan
                     </tr>
                     @foreach ($users as $index=>$user)
                     <tr>
@@ -40,13 +40,11 @@
                             @else
                                 <img src="{{ asset('uploads/user') }}/{{ $user->photo }}" width="100" alt=""></td>
                             @endif
-                            {{-- @can('user_delete') --}}
+                            
                         <td>
                             <a href="{{ route('user.delete',$user->id) }}" class="btn btn-danger">Delete</a>
                         </td>
-                        {{-- @else
-                        <h3>You Don't Have Access To This Page!</h3>
-                        @endcan --}}
+                        
                     </tr>
                     @endforeach
 
@@ -54,11 +52,11 @@
             </div>
         </div>
     </div>
-    {{-- @else
+    @else
     <h3>You Don't Have Access To This Page!</h3>
-    @endcan --}}
+    @endcan
 
-    {{-- @can('user_add') --}}
+    @can('user_add')
     <div class="col-lg-4">
         <div class="card">
             <div class="card-header bg-primary">
@@ -87,9 +85,9 @@
             </div>
         </div>
     </div>
-    {{-- @else
+    @else
 <h3>You Don't Have Access To This Page!</h3>
-    @endcan --}}
+    @endcan
 </div>
 
 @endsection

@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-{{-- @can('role_access') --}}
+@can('role_access')
     
 
 <div class="row">
@@ -176,7 +176,7 @@
         </div>
     </div>
 </div>
-{{-- @else
+@else
 <h3>You Don't Have Access To This Page!</h3>
-@endcan --}}
+@endcan
 @endsection
