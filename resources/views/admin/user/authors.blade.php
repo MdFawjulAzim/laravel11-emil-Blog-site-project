@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
    <div class="row">
-    @can('authors')
+    {{-- @can('authors') --}}
         
     
     <div class="col-lg-10">
@@ -51,9 +51,9 @@
          </div>
         </div>
     </div>
-    @else
+    {{-- @else
 <h3>You Don't Have Access To This Page!</h3>
-    @endcan
+    @endcan --}}
    </div>
 
 @endsection

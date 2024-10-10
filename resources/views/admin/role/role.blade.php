@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-@can('role_access')
+{{-- @can('role_access') --}}
     
 
 <div class="row">
@@ -80,7 +80,7 @@
         
 
 
-        {{-- <div class="card">
+        <div class="card">
             <div class="card-header bg-primary">
                 <h3 class="text-white">Add New Permission</h3>
             </div>
@@ -102,7 +102,7 @@
                     </div>
                 </form>
             </div>
-        </div> --}}
+        </div>
         <div class="card mt-3">
             <div class="card-header bg-primary">
                 <h3 class="text-white">Add New Role</h3>
@@ -176,7 +176,7 @@
         </div>
     </div>
 </div>
-@else
+{{-- @else
 <h3>You Don't Have Access To This Page!</h3>
-@endcan
+@endcan --}}
 @endsection
