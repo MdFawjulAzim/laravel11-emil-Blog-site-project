@@ -80,7 +80,7 @@
         
 
 
-        <div class="card">
+        {{-- <div class="card">
             <div class="card-header bg-primary">
                 <h3 class="text-white">Add New Permission</h3>
             </div>
@@ -102,7 +102,7 @@
                     </div>
                 </form>
             </div>
-        </div>
+        </div> --}}
         <div class="card mt-3">
             <div class="card-header bg-primary">
                 <h3 class="text-white">Add New Role</h3>
