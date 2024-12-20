@@ -1,6 +1,6 @@
 @extends('layouts.admin');
 @section('content')
-@can('category_trash')
+{{-- @can('category_trash') --}}
     
 
 <div class="row">
@@ -62,7 +62,7 @@
 
     </div>
 </div>
-@endcan
+{{-- @endcan --}}
 
 @endsection
 
