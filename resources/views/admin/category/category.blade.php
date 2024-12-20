@@ -116,13 +116,13 @@
 @section('script')
     <script>
         $("#chkSelectAll").on('click', function(){
-     this.checked ? $(".chkDel").prop("checked",true) : $(".chkDel").prop("checked",false); 
-     $('.del_check').toggleClass('d-none')
-})
+        this.checked ? $(".chkDel").prop("checked",true) : $(".chkDel").prop("checked",false); 
+        $('.del_check').toggleClass('d-none')
+        })
 
-$(".chkDel").on('click', function(){
-     $('.del_check').removeClass('d-none')
-})
+        $(".chkDel").on('click', function(){
+            $('.del_check').removeClass('d-none')
+        })
     </script>
 
 @endsection

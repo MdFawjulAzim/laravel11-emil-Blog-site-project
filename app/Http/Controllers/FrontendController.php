@@ -190,5 +190,9 @@ public function all_posts() {
     return view('frontend.author.all_posts', compact('posts'));
 }
 
+public function about(){
+    return view('frontend.about');
+}
+
     
 }

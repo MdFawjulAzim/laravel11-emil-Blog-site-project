@@ -24,6 +24,10 @@ Route::get('/author/register/page',[FrontendController::class,'author_register_p
 //Author list page
 Route::get('/author/list',[FrontendController::class,'author_list'])->name('author.list');
 
+//about list page
+Route::get('/about',[FrontendController::class,'about'])->name('about');
+
+
 //blog list show page
 Route::get('/all/posts', [FrontendController::class, 'all_posts'])->name('all.posts');
 
